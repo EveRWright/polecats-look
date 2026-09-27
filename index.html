@@ -4,19 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#1a120c" />
-  <meta name="description" content="Polecat's on Highway 123, Seguin. Life stinks. Beer is good." />
-  <title>Polecat’s — Look draft</title>
+  <title>Polecat’s</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Rye&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --ink: #1c140e;
-      --paper: #efe2c4;
-      --iron: #2a1c12;
-    }
+    :root { --ink: #1c140e; --paper: #f4e6c8; --iron: #24180f; }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: "Libre Baskerville", Georgia, serif;
       color: var(--paper);
       background-color: #1a120c;
       background-image: repeating-linear-gradient(
@@ -27,245 +25,284 @@
         #1c140e 34px 36px,
         #322214 36px 62px,
         #261a10 62px 64px,
-        #1a120c 64px 88px,
-        #2a1c12 88px 90px
+        #1a120c 64px 88px
       );
-      min-height: 100vh;
     }
-    .banner {
+    .top {
       position: sticky;
       top: 0;
-      z-index: 20;
-      text-align: center;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      font-size: 13px;
-      line-height: 1.4;
-      padding: 10px 16px;
-      color: #e6d3a8;
-      background: rgba(12, 8, 5, .94);
-      border-bottom: 1px solid #5c4630;
-    }
-    .menu {
+      z-index: 30;
+      height: 68px;
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 0 18px 0 22px;
+      background: rgba(14, 10, 7, .96);
+      border-bottom: 1px solid #6a5434;
+    }
+    .brand {
+      font-family: Rye, Georgia, serif;
+      font-size: 28px;
+      color: var(--paper);
+      text-decoration: none;
+      letter-spacing: .02em;
+      line-height: 1;
+    }
+    .nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
+    .burger {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border: 1px solid #8a7048;
+      background: var(--iron);
+      align-items: center;
       justify-content: center;
-      gap: 12px;
-      width: min(1100px, calc(100% - 32px));
-      margin: 22px auto 8px;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
     }
-    .wall {
-      width: min(1100px, calc(100% - 36px));
+    .burger span, .burger span:before, .burger span:after {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--paper);
+      content: "";
+    }
+    .menu-links { display: flex; gap: 8px; align-items: center; }
+    .menu-links a {
+      color: var(--paper);
+      text-decoration: none;
+      font-family: Georgia, serif;
+      font-size: 14px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 10px 12px;
+      border: 1px solid transparent;
+    }
+    .menu-links a:hover { border-color: #8a7048; background: #2a1c12; }
+    .fold {
+      min-height: calc(100vh - 68px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      width: min(1180px, calc(100% - 28px));
       margin: 0 auto;
-      padding: 18px 0 88px;
+      padding: 16px 0 22px;
     }
-    .hero { margin: 8px auto 36px; max-width: 760px; }
-    .poster {
-      margin: 0;
-      padding: 12px;
-      background: #120d09;
-      box-shadow: 0 0 0 1px #5c4630, 0 26px 40px rgba(0,0,0,.45);
+    .hero-sign {
+      display: block;
+      width: min(1080px, 100%);
+      max-height: calc(100vh - 188px);
+      object-fit: contain;
+      box-shadow: 0 18px 36px rgba(0,0,0,.45);
     }
-    .poster img { display: block; width: 100%; height: auto; }
+    .wall { width: min(1100px, calc(100% - 32px)); margin: 0 auto; padding: 8px 0 88px; }
     .plate {
-      margin-top: 36px;
-      padding: 42px 40px 36px;
+      margin-top: 28px;
+      padding: 34px 36px 30px;
       color: var(--ink);
       background:
-        radial-gradient(circle at 18px 18px, #2a2118 0 5px, #8a7048 6px 8px, transparent 9px),
-        radial-gradient(circle at calc(100% - 18px) 18px, #2a2118 0 5px, #8a7048 6px 8px, transparent 9px),
-        radial-gradient(circle at 18px calc(100% - 18px), #2a2118 0 5px, #8a7048 6px 8px, transparent 9px),
-        radial-gradient(circle at calc(100% - 18px) calc(100% - 18px), #2a2118 0 5px, #8a7048 6px 8px, transparent 9px),
-        linear-gradient(168deg, #f3e4c4 0%, #e2cb9e 40%, #d2b47c 100%);
+        radial-gradient(circle at 16px 16px, #2a2118 0 5px, #8a7048 6px 7.5px, transparent 8.5px),
+        radial-gradient(circle at calc(100% - 16px) 16px, #2a2118 0 5px, #8a7048 6px 7.5px, transparent 8.5px),
+        radial-gradient(circle at 16px calc(100% - 16px), #2a2118 0 5px, #8a7048 6px 7.5px, transparent 8.5px),
+        radial-gradient(circle at calc(100% - 16px) calc(100% - 16px), #2a2118 0 5px, #8a7048 6px 7.5px, transparent 8.5px),
+        linear-gradient(180deg, #f6e7c8 0%, #e4cc9e 100%);
       border: 3px solid #4a3824;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,246,220,.75),
-        inset 0 0 0 9px rgba(90,64,30,.2),
-        0 16px 24px rgba(0,0,0,.38);
+      box-shadow: inset 0 0 0 8px rgba(90,64,30,.16), 0 14px 22px rgba(0,0,0,.35);
     }
-    .pair {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-    }
-    .pair .plate { margin-top: 0; height: 100%; }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 28px; }
+    .pair .plate { margin-top: 0; }
     h2 {
       margin: 0;
       text-align: center;
-      font-size: 28px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+      font-family: Rye, Georgia, serif;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: .04em;
     }
     .rule {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin: 12px 8px 22px;
+      margin: 10px 24px 18px;
       color: #5a4018;
-      letter-spacing: .2em;
     }
-    .rule:before, .rule:after {
-      content: "";
-      flex: 1;
-      height: 2px;
-      background: #7a5c34;
+    .rule:before, .rule:after { content: ""; flex: 1; height: 2px; background: #7a5c34; }
+    .line {
+      margin: 0 0 10px;
+      text-align: center;
+      font-size: 26px;
+      line-height: 1.25;
     }
-    .plate p {
-      margin: 0 0 18px;
-      font-size: 24px;
-      line-height: 1.4;
-    }
-    .plate p:last-child { margin-bottom: 0; }
     .fine {
-      margin-top: 8px;
+      margin: 14px 0 0;
+      text-align: center;
       font-size: 18px;
       font-style: italic;
       color: #5c472c;
-      line-height: 1.4;
     }
-    .where {
+    .addr {
+      display: grid;
+      justify-items: center;
+      gap: 2px;
+      margin: 6px 0 0;
+      font-style: normal;
       text-align: center;
-      font-size: 28px;
-      line-height: 1.25;
-      margin: 0 0 8px;
     }
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px;
-      margin-top: 28px;
+    .addr .num {
+      font-family: Rye, Georgia, serif;
+      font-size: 58px;
+      line-height: .95;
+      letter-spacing: .02em;
     }
+    .addr .road { font-size: 28px; letter-spacing: .04em; margin-top: 6px; }
+    .addr .town { font-size: 22px; letter-spacing: .08em; text-transform: uppercase; margin-top: 4px; }
+    .addr .way { font-size: 18px; font-style: italic; margin-top: 10px; }
+    .btn-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
     .btn {
       appearance: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 58px;
-      min-width: 160px;
-      padding: 14px 20px;
+      min-height: 54px;
+      min-width: 148px;
+      padding: 12px 18px;
       border: 2px solid #8a7048;
       background: var(--iron);
-      color: #f3e6c8;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 18px;
-      letter-spacing: .08em;
+      color: var(--paper);
+      font-family: Georgia, serif;
+      font-size: 16px;
+      letter-spacing: .1em;
       text-transform: uppercase;
       text-decoration: none;
       cursor: pointer;
-      box-shadow: inset 0 0 0 1px #3a2a18, 0 4px 0 #0c0907;
+      box-shadow: 0 4px 0 #0c0907;
     }
     .btn:hover { background: #3a2818; color: #fff8e8; }
-    .btn-hot { background: #6e2618; border-color: #c4a15f; color: #fff6e4; }
-    .btn-hot:hover { background: #8a3222; }
-    .map-frame {
-      margin: 8px 0 0;
-      border: 2px solid #4a3824;
-      background: #1a120c;
-    }
-    .map-frame iframe { display: block; width: 100%; height: 380px; border: 0; }
+    .btn-hot { background: #6e2618; border-color: #d7c090; color: #fff6e4; }
+    .plate .btn-row { margin-top: 22px; }
+    .map-frame { margin-top: 8px; border: 2px solid #4a3824; }
+    .map-frame iframe { display: block; width: 100%; height: 360px; border: 0; }
     #chat {
+      margin-top: 16px;
       background: #16110c;
       color: var(--paper);
-      min-height: 140px;
-      max-height: 280px;
+      min-height: 120px;
+      max-height: 260px;
       overflow: auto;
-      padding: 16px 18px;
+      padding: 14px 16px;
       border: 2px solid #4a3824;
     }
-    .bubble { margin: 0 0 12px; padding: 12px 14px; font-size: 20px; line-height: 1.4; }
+    .bubble { margin: 0 0 10px; padding: 12px 14px; font-size: 18px; line-height: 1.4; }
     .you { background: #2c2218; }
     .house { background: #241c14; border-left: 4px solid #8a2a1e; }
-    .qs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 22px;
-    }
-    .qs .btn { width: 100%; min-width: 0; text-transform: none; letter-spacing: .02em; font-size: 20px; }
+    .qs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+    .qs .btn { width: 100%; min-width: 0; text-transform: none; letter-spacing: .02em; font-size: 18px; }
     footer {
-      margin: 36px 0 0;
+      margin: 28px 0 0;
       text-align: center;
-      letter-spacing: .14em;
+      letter-spacing: .16em;
       text-transform: uppercase;
-      font-size: 14px;
+      font-size: 13px;
       color: #c4aa78;
     }
     .dock { display: none; }
     @media (max-width: 860px) {
-      .pair { grid-template-columns: 1fr; gap: 28px; }
-      .plate { padding: 28px 20px 24px; }
-      .plate p, .where { font-size: 22px; }
-      h2 { font-size: 24px; }
+      .burger { display: flex; }
+      .menu-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 12px 14px;
+        background: rgba(14,10,7,.98);
+        border-bottom: 1px solid #6a5434;
+      }
+      .nav-toggle:checked ~ .menu-links { display: flex; }
+      .menu-links a { padding: 14px 12px; border-bottom: 1px solid #3a2a18; }
+      .fold { min-height: auto; padding-top: 14px; }
+      .hero-sign { max-height: 46vh; }
+      .pair { grid-template-columns: 1fr; }
+      .plate { padding: 26px 18px 22px; }
+      .line { font-size: 22px; }
+      .addr .num { font-size: 46px; }
       .qs { grid-template-columns: 1fr; }
-      .map-frame iframe { height: 260px; }
-      .wall { padding-bottom: 108px; }
+      .map-frame iframe { height: 240px; }
+      .wall { padding-bottom: 104px; }
       .dock {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         position: fixed;
         left: 0; right: 0; bottom: 0;
-        z-index: 20;
         background: rgba(12,8,5,.96);
         border-top: 1px solid #6a5434;
+        z-index: 30;
         padding-bottom: env(safe-area-inset-bottom);
       }
-      .dock .btn {
-        min-width: 0;
-        min-height: 56px;
-        border: 0;
-        box-shadow: none;
-        background: transparent;
-        font-size: 13px;
-        padding: 8px 4px;
-      }
+      .dock .btn { min-width: 0; border: 0; box-shadow: none; background: transparent; font-size: 12px; min-height: 54px; }
     }
   </style>
 </head>
 <body>
-  <div class="banner">Look draft · not the bar’s live site · not paid · Randy has not stamped this</div>
-  <nav class="menu" aria-label="Sections">
-    <a class="btn" href="#house">The house</a>
-    <a class="btn" href="#room">The room</a>
-    <a class="btn" href="#come">Come by</a>
-    <a class="btn" href="#map">Map</a>
-    <a class="btn" href="#ask">Ask</a>
-  </nav>
-  <div class="wall">
-    <header class="hero">
-      <figure class="poster">
-        <img src="polecats-tin.jpg" alt="Polecat’s. Life stinks. Beer is good. Where everyone can be a little stinker." />
-      </figure>
-      <div class="btn-row">
-        <a class="btn btn-hot" href="tel:8303790564">Call (830) 379-0564</a>
-        <a class="btn" href="#map">Map</a>
-        <a class="btn" href="https://www.facebook.com/polecats123" target="_blank" rel="noopener">Facebook</a>
-      </div>
-    </header>
+  <header class="top">
+    <a class="brand" href="#top">Polecat’s</a>
+    <input class="nav-toggle" id="nav-toggle" type="checkbox" />
+    <label class="burger" for="nav-toggle"><span></span></label>
+    <nav class="menu-links" aria-label="On this page">
+      <a href="#sit">Come sit</a>
+      <a href="#back">Out back</a>
+      <a href="#come">Come by</a>
+      <a href="#map">Map</a>
+      <a href="#ask">Ask</a>
+    </nav>
+  </header>
 
+  <section class="fold" id="top">
+    <img class="hero-sign" src="polecats-hero-wide.jpg" alt="Polecat’s. Life stinks. Beer is good. Where everyone can be a little stinker." />
+    <div class="btn-row">
+      <a class="btn btn-hot" href="tel:8303790564">Call (830) 379-0564</a>
+      <a class="btn" href="#map">Map</a>
+      <a class="btn" href="https://www.facebook.com/polecats123" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </section>
+
+  <main class="wall">
     <div class="pair">
-      <section class="plate" id="house">
-        <h2>The house</h2>
+      <section class="plate" id="sit">
+        <h2>Come sit</h2>
         <div class="rule">★</div>
-        <p>A bar. Dance floor inside. Dance floor out back.</p>
-        <p>Come sit. Cold beer. Be straight. No drama.</p>
-        <p>Adults. Not a playground. That is the point.</p>
+        <p class="line">Dance floor inside.</p>
+        <p class="line">Dance floor out back.</p>
+        <p class="line">Cold beer. Be straight. No drama.</p>
+        <p class="line">An adult bar. Leave the kids home.</p>
       </section>
-      <section class="plate" id="room">
-        <h2>The room</h2>
+      <section class="plate" id="back">
+        <h2>Out back</h2>
         <div class="rule">★</div>
-        <p>Bigger than it looks from the road.</p>
-        <p>Pictures on the walls. A stage out back that Randy built right. People play here.</p>
-        <p class="fine">Who is on, and when, is on Facebook. This page does not guess the night.</p>
+        <p class="line">Pictures on the walls.</p>
+        <p class="line">A stage Randy built.</p>
+        <p class="line">People play here.</p>
+        <p class="fine">The night is posted on Facebook.</p>
       </section>
     </div>
 
     <section class="plate" id="come">
       <h2>Come by</h2>
       <div class="rule">★</div>
-      <p class="where">23230 S State Highway 123<br>Seguin, Texas 78155</p>
-      <p class="where">South of Seguin, toward Stockdale.</p>
-      <p>Listings don’t agree on the hour. Call before you drive.</p>
+      <address class="addr">
+        <span class="num">23230</span>
+        <span class="road">S State Highway 123</span>
+        <span class="town">Seguin, Texas 78155</span>
+        <span class="way">South of town, toward Stockdale.</span>
+      </address>
+      <p class="fine">Call first. The listed hours do not match.</p>
       <div class="btn-row">
         <a class="btn btn-hot" href="tel:8303790564">Call the bar</a>
         <a class="btn" href="#map">Show the map</a>
@@ -275,26 +312,21 @@
     <section class="plate" id="map">
       <h2>On the map</h2>
       <div class="rule">★</div>
-      <p>Highway 123. South of Seguin.</p>
+      <p class="line">Highway 123. South of Seguin.</p>
       <div class="map-frame">
-        <iframe
-          title="Polecat’s on State Highway 123"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=-97.9722%2C29.3693%2C-97.9402%2C29.3933&amp;layer=mapnik&amp;marker=29.3812662%2C-97.9562182"></iframe>
+        <iframe title="Polecat’s on Highway 123" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=-97.9722%2C29.3693%2C-97.9402%2C29.3933&amp;layer=mapnik&amp;marker=29.3812662%2C-97.9562182"></iframe>
       </div>
       <div class="btn-row">
         <a class="btn btn-hot" href="https://www.google.com/maps/search/?api=1&amp;query=Polecat%27s%2023230%20S%20State%20Highway%20123%20Seguin%20TX%2078155" target="_blank" rel="noopener">Open in Google Maps</a>
-        <a class="btn" href="https://www.openstreetmap.org/?mlat=29.3812662&amp;mlon=-97.9562182#map=16/29.38127/-97.95622" target="_blank" rel="noopener">Open in OpenStreetMap</a>
       </div>
     </section>
 
     <section class="plate" id="ask">
-      <h2>Ask the house</h2>
+      <h2>Ask</h2>
       <div class="rule">★</div>
-      <p class="fine">Tone sample. Not a live brain. Straight. Not a roast.</p>
+      <p class="fine">A few straight answers. Not a live brain.</p>
       <div id="chat">
-        <div class="bubble house">You got a question, ask it. I’ll keep it short.</div>
+        <div class="bubble house">Ask it plain. I’ll keep it short.</div>
       </div>
       <div class="qs">
         <button class="btn" type="button" data-q="kids">Kids?</button>
@@ -305,10 +337,11 @@
         <button class="btn" type="button" data-q="beer">Is the beer cold?</button>
       </div>
     </section>
-    <footer>Highway 123 · Texas Beer · look draft</footer>
-  </div>
+    <footer>Highway 123 · Seguin</footer>
+  </main>
+
   <nav class="dock" aria-label="Phone">
-    <a class="btn" href="#house">House</a>
+    <a class="btn" href="#sit">Sit</a>
     <a class="btn" href="#come">Come</a>
     <a class="btn" href="#map">Map</a>
     <a class="btn btn-hot" href="tel:8303790564">Call</a>
@@ -334,6 +367,12 @@
         chat.appendChild(ask);
         chat.appendChild(ans);
         chat.scrollTop = chat.scrollHeight;
+      });
+    });
+    document.querySelectorAll(".menu-links a, .dock a").forEach((a) => {
+      a.addEventListener("click", () => {
+        const box = document.getElementById("nav-toggle");
+        if (box) box.checked = false;
       });
     });
   </script>
