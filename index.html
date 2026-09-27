@@ -16,17 +16,14 @@
       margin: 0;
       font-family: "Libre Baskerville", Georgia, serif;
       color: var(--paper);
-      background-color: #1a120c;
-      background-image: repeating-linear-gradient(
-        90deg,
-        #3a2818 0 10px,
-        #2c1e12 10px 11px,
-        #24180f 11px 34px,
-        #1c140e 34px 36px,
-        #322214 36px 62px,
-        #261a10 62px 64px,
-        #1a120c 64px 88px
-      );
+      background-color: #140e0a;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: #140e0a url("polecats-wood.jpg") center / cover no-repeat;
     }
     .top {
       position: sticky;
