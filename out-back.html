@@ -39,12 +39,21 @@
       border-bottom: 1px solid #6a5434;
     }
     .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       font-family: Rye, Georgia, serif;
       font-size: 28px;
       color: var(--paper);
       text-decoration: none;
       letter-spacing: .02em;
       line-height: 1;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      display: block;
+      width: 48px;
+      height: 48px;
     }
     .nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
     .burger {
@@ -268,6 +277,8 @@
     }
     .dock { display: none; }
     @media (max-width: 860px) {
+      .brand { font-size: 22px; gap: 8px; }
+      .brand-mark { width: 40px; height: 40px; }
       .burger { display: flex; }
       .menu-links {
         display: none;
@@ -314,7 +325,7 @@
 <body>
   <div class="wood-wall" aria-hidden="true"></div>
   <header class="top">
-    <a class="brand" href="index.html">Polecat’s</a>
+    <a class="brand" href="index.html"><img class="brand-mark" src="polecat-nav.png?v=1" alt="" />Polecat’s</a>
     <input class="nav-toggle" id="nav-toggle" type="checkbox" />
     <label class="burger" for="nav-toggle"><span></span></label>
     <nav class="menu-links" aria-label="On this site">
