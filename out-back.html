@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1a120c" />
+  <title>Out Back · Polecat’s</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Rye&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink: #1c140e; --paper: #f4e6c8; --iron: #24180f; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: #140e0a; }
+    body {
+      margin: 0;
+      font-family: "Libre Baskerville", Georgia, serif;
+      color: var(--paper);
+      background: transparent;
+    }
+    .wood-wall {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: #140e0a url("polecats-wood.jpg?v=4") center center / cover no-repeat;
+    }
+    .top, .fold, .wall, .dock { position: relative; z-index: 1; }
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 0 18px 0 22px;
+      background: rgba(14, 10, 7, .96);
+      border-bottom: 1px solid #6a5434;
+    }
+    .brand {
+      font-family: Rye, Georgia, serif;
+      font-size: 28px;
+      color: var(--paper);
+      text-decoration: none;
+      letter-spacing: .02em;
+      line-height: 1;
+    }
+    .nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
+    .burger {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border: 1px solid #8a7048;
+      background: var(--iron);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .burger span, .burger span:before, .burger span:after {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--paper);
+      content: "";
+    }
+    .menu-links { display: flex; gap: 8px; align-items: center; }
+    .menu-links a {
+      color: var(--paper);
+      text-decoration: none;
+      font-family: Georgia, serif;
+      font-size: 14px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 10px 12px;
+      border: 1px solid transparent;
+    }
+    .menu-links a:hover,
+    .menu-links a[aria-current="page"] { border-color: #8a7048; background: #2a1c12; }
+    .fold {
+      min-height: calc(100vh - 68px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: min(920px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 22px 0 28px;
+    }
+    .wall { width: min(1100px, calc(100% - 32px)); margin: 0 auto; padding: 8px 0 88px; }
+    .plate {
+      margin-top: 28px;
+      padding: 34px 36px 30px;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 16px 16px, #2a2118 0 5px, #8a7048 6px 7.5px, transparent 8.5px),
+        radial-gradient(circle at calc(100% - 16px) 16px, #2a2118 0 5px, #8a7048 6px 7.5px, transparent 8.5px),
+        radial-gradient(circle at 16px calc(100% - 16px), #2a2118 0 5px, #8a7048 6px 7.5px, transparent 8.5px),
+        radial-gradient(circle at calc(100% - 16px) calc(100% - 16px), #2a2118 0 5px, #8a7048 6px 7.5px, transparent 8.5px),
+        linear-gradient(180deg, #f6e7c8 0%, #e4cc9e 100%);
+      border: 3px solid #4a3824;
+      box-shadow: inset 0 0 0 8px rgba(90,64,30,.16), 0 14px 22px rgba(0,0,0,.35);
+    }
+    .fold .plate { width: 100%; margin-top: 0; }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 28px; }
+    .pair .plate { margin-top: 0; }
+    h1, h2 {
+      margin: 0;
+      text-align: center;
+      font-family: Rye, Georgia, serif;
+      font-weight: 400;
+      letter-spacing: .04em;
+    }
+    h1 { font-size: 64px; }
+    h2 { font-size: 32px; }
+    .rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 10px 24px 18px;
+      color: #5a4018;
+    }
+    .rule:before, .rule:after { content: ""; flex: 1; height: 2px; background: #7a5c34; }
+    .line {
+      margin: 0 0 10px;
+      text-align: center;
+      font-size: 26px;
+      line-height: 1.25;
+    }
+    .fine {
+      margin: 14px 0 0;
+      text-align: center;
+      font-size: 18px;
+      font-style: italic;
+      color: #5c472c;
+    }
+    .btn-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .btn {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      min-width: 148px;
+      padding: 12px 18px;
+      border: 2px solid #8a7048;
+      background: var(--iron);
+      color: var(--paper);
+      font-family: Georgia, serif;
+      font-size: 16px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #0c0907;
+    }
+    .btn:hover { background: #3a2818; color: #fff8e8; }
+    .btn-hot { background: #6e2618; border-color: #d7c090; color: #fff6e4; }
+    .plate .btn-row { margin-top: 22px; }
+    footer {
+      margin: 28px 0 0;
+      text-align: center;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-size: 13px;
+      color: #c4aa78;
+    }
+    .dock { display: none; }
+    @media (max-width: 860px) {
+      .burger { display: flex; }
+      .menu-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 12px 14px;
+        background: rgba(14,10,7,.98);
+        border-bottom: 1px solid #6a5434;
+      }
+      .nav-toggle:checked ~ .menu-links { display: flex; }
+      .menu-links a { padding: 14px 12px; border-bottom: 1px solid #3a2a18; }
+      .fold {
+        min-height: auto;
+        width: calc(100% - 24px);
+        padding: 18px 0 8px;
+      }
+      h1 { font-size: 46px; }
+      .pair { grid-template-columns: 1fr; }
+      .plate { padding: 26px 18px 22px; }
+      .line { font-size: 22px; }
+      .wall { padding-bottom: 104px; }
+      .dock {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        position: fixed;
+        left: 0; right: 0; bottom: 0;
+        background: rgba(12,8,5,.96);
+        border-top: 1px solid #6a5434;
+        z-index: 30;
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+      .dock .btn { min-width: 0; border: 0; box-shadow: none; background: transparent; font-size: 12px; min-height: 54px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wood-wall" aria-hidden="true"></div>
+  <header class="top">
+    <a class="brand" href="index.html">Polecat’s</a>
+    <input class="nav-toggle" id="nav-toggle" type="checkbox" />
+    <label class="burger" for="nav-toggle"><span></span></label>
+    <nav class="menu-links" aria-label="On this site">
+      <a href="index.html#sit">Come sit</a>
+      <a href="out-back.html" aria-current="page">Out back</a>
+      <a href="index.html#come">Come by</a>
+      <a href="index.html#map">Map</a>
+      <a href="index.html#ask">Ask</a>
+    </nav>
+  </header>
+
+  <section class="fold">
+    <section class="plate">
+      <h1>Out Back</h1>
+      <div class="rule">★</div>
+      <p class="line">A full stage.</p>
+      <p class="line">A roof over it.</p>
+      <p class="line">Seats in the open air.</p>
+      <p class="line">A bar. Bathrooms.</p>
+      <p class="line">Rustic. Same wood. Same night.</p>
+      <p class="fine">Still being finished. This page grows with the yard.</p>
+    </section>
+  </section>
+
+  <main class="wall">
+    <div class="pair">
+      <section class="plate">
+        <h2>The stage</h2>
+        <div class="rule">★</div>
+        <p class="line">A full stage.</p>
+        <p class="line">A roof over the players.</p>
+        <p class="line">People play here.</p>
+        <p class="fine">The night is posted on Facebook.</p>
+      </section>
+      <section class="plate">
+        <h2>The seats</h2>
+        <div class="rule">★</div>
+        <p class="line">Outdoor seating.</p>
+        <p class="line">Come sit outside.</p>
+        <p class="line">Stay for the music.</p>
+      </section>
+    </div>
+
+    <div class="pair">
+      <section class="plate">
+        <h2>The bar</h2>
+        <div class="rule">★</div>
+        <p class="line">A bar out back.</p>
+        <p class="line">Rustic, like the yard.</p>
+        <p class="line">Built for the same night.</p>
+      </section>
+      <section class="plate">
+        <h2>Bathrooms</h2>
+        <div class="rule">★</div>
+        <p class="line">Bathrooms for the yard.</p>
+        <p class="line">Right there with the stage.</p>
+        <p class="line">Part of the build.</p>
+      </section>
+    </div>
+
+    <section class="plate">
+      <h2>Come see it</h2>
+      <div class="rule">★</div>
+      <p class="line">23230 S State Highway 123</p>
+      <p class="line">Seguin, Texas</p>
+      <p class="fine">South of town, toward Stockdale. Call before you drive out for a night that is not posted yet.</p>
+      <div class="btn-row">
+        <a class="btn" href="index.html">Polecat’s</a>
+        <a class="btn btn-hot" href="tel:8303790564">Call (830) 379-0564</a>
+        <a class="btn" href="https://www.facebook.com/polecats123" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </section>
+    <footer>Highway 123 · Seguin</footer>
+  </main>
+
+  <nav class="dock" aria-label="Phone">
+    <a class="btn" href="index.html">Home</a>
+    <a class="btn" href="index.html#come">Come</a>
+    <a class="btn" href="index.html#map">Map</a>
+    <a class="btn btn-hot" href="tel:8303790564">Call</a>
+  </nav>
+  <script>
+    document.querySelectorAll(".menu-links a, .dock a").forEach((a) => {
+      a.addEventListener("click", () => {
+        const box = document.getElementById("nav-toggle");
+        if (box) box.checked = false;
+      });
+    });
+  </script>
+</body>
+</html>
