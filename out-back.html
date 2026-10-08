@@ -85,9 +85,17 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: min(920px, calc(100% - 28px));
+      gap: 18px;
+      width: min(1180px, calc(100% - 28px));
       margin: 0 auto;
-      padding: 22px 0 28px;
+      padding: 16px 0 22px;
+    }
+    .hero-sign {
+      display: block;
+      width: min(1080px, 100%);
+      max-height: calc(100vh - 120px);
+      object-fit: contain;
+      box-shadow: 0 18px 36px rgba(0,0,0,.45);
     }
     .wall { width: min(1100px, calc(100% - 32px)); margin: 0 auto; padding: 8px 0 88px; }
     .plate {
@@ -188,7 +196,12 @@
       .fold {
         min-height: auto;
         width: calc(100% - 24px);
-        padding: 18px 0 8px;
+        padding: 12px 0 8px;
+      }
+      .hero-sign {
+        width: min(94vw, 720px);
+        max-height: none;
+        height: auto;
       }
       h1 { font-size: 46px; }
       .pair { grid-template-columns: 1fr; }
@@ -225,53 +238,58 @@
   </header>
 
   <section class="fold">
-    <section class="plate">
-      <h1>Out Back</h1>
-      <div class="rule">★</div>
-      <p class="line">A full stage.</p>
-      <p class="line">A roof over it.</p>
-      <p class="line">Seats in the open air.</p>
-      <p class="line">A bar. Bathrooms.</p>
-      <p class="line">Rustic. Same wood. Same night.</p>
-      <p class="fine">Still being finished. This page grows with the yard.</p>
-    </section>
+    <img class="hero-sign" src="out-back-hero.jpg?v=1" alt="A look at Polecat’s out back: covered wood pavilion, a stage, benches, an outdoor bar, and the polecat." />
   </section>
 
   <main class="wall">
+    <section class="plate">
+      <h1>Out Back</h1>
+      <div class="rule">★</div>
+      <p class="line">Three thousand square feet, covered.</p>
+      <p class="line">A large stage for bands.</p>
+      <p class="line">Relaxed country. Rustic. Historic.</p>
+      <p class="fine">The picture up top is a look. Photographs of the yard will take its place.</p>
+    </section>
+
     <div class="pair">
       <section class="plate">
         <h2>The stage</h2>
         <div class="rule">★</div>
-        <p class="line">A full stage.</p>
-        <p class="line">A roof over the players.</p>
-        <p class="line">People play here.</p>
+        <p class="line">A large stage.</p>
+        <p class="line">Bands play under the roof.</p>
         <p class="fine">The night is posted on Facebook.</p>
       </section>
       <section class="plate">
-        <h2>The seats</h2>
+        <h2>The bar</h2>
         <div class="rule">★</div>
-        <p class="line">Outdoor seating.</p>
-        <p class="line">Come sit outside.</p>
-        <p class="line">Stay for the music.</p>
+        <p class="line">A full bar outside.</p>
+        <p class="line">An outside cooler.</p>
+        <p class="line">Built for the yard.</p>
       </section>
     </div>
 
     <div class="pair">
       <section class="plate">
-        <h2>The bar</h2>
+        <h2>Food</h2>
         <div class="rule">★</div>
-        <p class="line">A bar out back.</p>
-        <p class="line">Rustic, like the yard.</p>
-        <p class="line">Built for the same night.</p>
+        <p class="line">A serving area for food.</p>
+        <p class="line">Right there with the night.</p>
       </section>
       <section class="plate">
-        <h2>Bathrooms</h2>
+        <h2>Restrooms</h2>
         <div class="rule">★</div>
-        <p class="line">Bathrooms for the yard.</p>
-        <p class="line">Right there with the stage.</p>
-        <p class="line">Part of the build.</p>
+        <p class="line">Outside restrooms.</p>
+        <p class="line">Part of the yard.</p>
       </section>
     </div>
+
+    <section class="plate">
+      <h2>Green room</h2>
+      <div class="rule">★</div>
+      <p class="line">A place to get ready.</p>
+      <p class="line">Brides, before the wedding.</p>
+      <p class="line">Bands, before they play.</p>
+    </section>
 
     <section class="plate">
       <h2>Come see it</h2>
