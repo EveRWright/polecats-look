@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#1a120c" />
   <title>Polecat’s</title>
+  <link rel="icon" href="favicon.png?v=1" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Rye&display=swap" rel="stylesheet" />
@@ -126,6 +127,28 @@
       border: 3px solid #4a3824;
       box-shadow: inset 0 0 0 8px rgba(90,64,30,.16), 0 14px 22px rgba(0,0,0,.35);
     }
+    .plate.iron {
+      color: var(--paper);
+      background:
+        radial-gradient(circle at 16px 16px, #1a120c 0 5px, #d7c090 6px 7.5px, transparent 8.5px),
+        radial-gradient(circle at calc(100% - 16px) 16px, #1a120c 0 5px, #d7c090 6px 7.5px, transparent 8.5px),
+        radial-gradient(circle at 16px calc(100% - 16px), #1a120c 0 5px, #d7c090 6px 7.5px, transparent 8.5px),
+        radial-gradient(circle at calc(100% - 16px) calc(100% - 16px), #1a120c 0 5px, #d7c090 6px 7.5px, transparent 8.5px),
+        linear-gradient(180deg, #4a3018 0%, #24160f 100%);
+      border-color: #d7c090;
+      box-shadow: inset 0 0 0 8px rgba(212, 176, 112, .12), 0 14px 22px rgba(0,0,0,.35);
+    }
+    .plate.rust {
+      color: #fff6e8;
+      background:
+        radial-gradient(circle at 16px 16px, #2a120c 0 5px, #f4e6c8 6px 7.5px, transparent 8.5px),
+        radial-gradient(circle at calc(100% - 16px) 16px, #2a120c 0 5px, #f4e6c8 6px 7.5px, transparent 8.5px),
+        radial-gradient(circle at 16px calc(100% - 16px), #2a120c 0 5px, #f4e6c8 6px 7.5px, transparent 8.5px),
+        radial-gradient(circle at calc(100% - 16px) calc(100% - 16px), #2a120c 0 5px, #f4e6c8 6px 7.5px, transparent 8.5px),
+        linear-gradient(180deg, #8a3220 0%, #4a160f 100%);
+      border-color: #e4cc9e;
+      box-shadow: inset 0 0 0 3px #f4e6c8, 0 14px 22px rgba(0,0,0,.35);
+    }
     .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 28px; }
     .pair .plate { margin-top: 0; }
     h2 {
@@ -157,6 +180,10 @@
       font-style: italic;
       color: #5c472c;
     }
+    .plate.iron .fine, .plate.rust .fine { color: #f4e6c8; }
+    .plate.iron .rule, .plate.rust .rule { color: #f4e6c8; }
+    .plate.iron .rule:before, .plate.iron .rule:after,
+    .plate.rust .rule:before, .plate.rust .rule:after { background: #e4cc9e; }
     .addr {
       display: grid;
       justify-items: center;
@@ -214,6 +241,20 @@
     .house { background: #241c14; border-left: 4px solid #8a2a1e; }
     .qs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
     .qs .btn { width: 100%; min-width: 0; text-transform: none; letter-spacing: .02em; font-size: 18px; }
+    .closer {
+      width: min(980px, 100%);
+      margin: 48px auto 0;
+    }
+    .closer img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 12px solid #f3e2c4;
+      box-shadow:
+        0 0 0 8px #24180f,
+        0 16px 0 rgba(0,0,0,.22),
+        0 28px 32px rgba(0,0,0,.5);
+    }
     footer {
       margin: 28px 0 0;
       text-align: center;
@@ -287,16 +328,16 @@
     <label class="burger" for="nav-toggle"><span></span></label>
     <nav class="menu-links" aria-label="On this page">
       <a href="#sit">Come sit</a>
-      <a href="out-back.html">Out back</a>
-      <a href="#come">Come by</a>
+      <a href="#come">Stop by</a>
+      <a href="events.html">Events</a>
       <a href="#map">Map</a>
       <a href="#ask">Ask</a>
     </nav>
   </header>
 
   <section class="fold" id="top">
-    <img class="hero-sign hero-wide" src="polecats-hero-wide.webp?v=6" alt="Polecat’s. Life stinks. Beer is good. Where everyone can be a little stinker." />
-    <img class="hero-sign hero-square" src="polecats-tin-square.jpg?v=6" alt="Polecat’s. Life stinks. Beer is good. Where everyone can be a little stinker." />
+    <img class="hero-sign hero-wide" src="polecats-hero-wide.webp?v=7" alt="Polecat’s. Life stinks. Beer is good. Where everyone can be a little stinker." />
+    <img class="hero-sign hero-square" src="polecats-tin-square.jpg?v=7" alt="Polecat’s. Life stinks. Beer is good. Where everyone can be a little stinker." />
     <div class="btn-row">
       <a class="btn btn-hot" href="tel:8303790564">Call (830) 379-0564</a>
       <a class="btn" href="#map">Map</a>
@@ -305,30 +346,66 @@
   </section>
 
   <main class="wall">
+    <section class="plate" id="sit">
+      <h2>Come sit</h2>
+      <div class="rule">★</div>
+      <p class="line">Dance floor inside.</p>
+      <p class="line">Dance floor out back.</p>
+      <p class="line">Cold beer. Be straight. No drama.</p>
+      <p class="line">An adult bar. Leave the kids home.</p>
+    </section>
+
+    <section class="plate iron" id="back">
+      <h2>Out back</h2>
+      <div class="rule">★</div>
+      <p class="line">Three thousand square feet, covered.</p>
+      <p class="line">A large stage for bands.</p>
+      <p class="line">Dance floor out back.</p>
+      <p class="line">Seats. A bar. Bathrooms.</p>
+      <p class="fine">Relaxed country. Rustic. Historic.</p>
+    </section>
+
     <div class="pair">
-      <section class="plate" id="sit">
-        <h2>Come sit</h2>
+      <section class="plate">
+        <h2>The stage</h2>
         <div class="rule">★</div>
-        <p class="line">Dance floor inside.</p>
-        <p class="line">Dance floor out back.</p>
-        <p class="line">Cold beer. Be straight. No drama.</p>
-        <p class="line">An adult bar. Leave the kids home.</p>
+        <p class="line">A large stage.</p>
+        <p class="line">Bands play under the roof.</p>
       </section>
-      <section class="plate" id="back">
-        <h2>Out back</h2>
+      <section class="plate iron">
+        <h2>The bar</h2>
         <div class="rule">★</div>
-        <p class="line">A full stage under a roof.</p>
-        <p class="line">Seats. A bar. Bathrooms.</p>
-        <p class="line">Rustic. Same night.</p>
-        <p class="fine">The night is posted on Facebook.</p>
-        <div class="btn-row">
-          <a class="btn" href="out-back.html">See out back</a>
-        </div>
+        <p class="line">A full bar outside.</p>
+        <p class="line">An outside cooler.</p>
+        <p class="line">Built for the yard.</p>
       </section>
     </div>
 
+    <div class="pair">
+      <section class="plate">
+        <h2>Food</h2>
+        <div class="rule">★</div>
+        <p class="line">A serving area for food.</p>
+        <p class="line">Right there with the night.</p>
+      </section>
+      <section class="plate iron">
+        <h2>Restrooms</h2>
+        <div class="rule">★</div>
+        <p class="line">Outside restrooms.</p>
+        <p class="line">Part of the yard.</p>
+      </section>
+    </div>
+
+    <section class="plate rust">
+      <h2>Green room</h2>
+      <div class="rule">★</div>
+      <p class="line">A place to get ready.</p>
+      <p class="line">Brides, before the wedding.</p>
+      <p class="line">Bands, before they play.</p>
+    </section>
+
     <section class="plate" id="come">
-      <h2>Come by</h2>
+      <h2>Stop by</h2>
       <div class="rule">★</div>
       <address class="addr">
         <span class="num">23230</span>
@@ -372,14 +449,18 @@
         <button class="btn" type="button" data-q="chill">Can I just chill?</button>
         <button class="btn" type="button" data-q="beer">Is the beer cold?</button>
         <button class="btn" type="button" data-q="nokids">Really no kids?</button>
+        <button class="btn" type="button" data-q="married">Can I get married there?</button>
       </div>
     </section>
+    <figure class="closer">
+      <img src="out-back-hero.jpg?v=1" alt="The polecat on a fence rail beside a bottle of beer." />
+    </figure>
     <footer>Highway 123 · Seguin</footer>
   </main>
 
   <nav class="dock" aria-label="Phone">
     <a class="btn" href="#sit">Sit</a>
-    <a class="btn" href="#come">Come</a>
+    <a class="btn" href="#come">Stop</a>
     <a class="btn" href="#map">Map</a>
     <a class="btn btn-hot" href="tel:8303790564">Call</a>
   </nav>
@@ -391,7 +472,8 @@
       act: "Be straight. Do the right thing. Respect the house and the people in it.",
       chill: "Yes. Come as you are. Cold beer. No drama. Do the right thing.",
       beer: "Yes. Beer is good, and it is cold.",
-      nokids: "Not entirely. Sometimes children are welcome at special events. We take a stance against drunk driving with children. Especially that."
+      nokids: "Not entirely. Sometimes children are welcome at special events. We take a stance against drunk driving with children. Especially that.",
+      married: "Heck yes. Of course you can get married here. The yard is out back. Go look."
     };
     const chat = document.getElementById("chat");
     document.querySelectorAll(".qs button").forEach((btn) => {
